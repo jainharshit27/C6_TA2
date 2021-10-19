@@ -4,6 +4,11 @@ pygame.init()
 
 screen = pygame.display.set_mode((1200, 400))
 
+# create a variable game_state and assign value "play" to it.
+
+score = 0
+score_font = pygame.font.Font("freesansbold.ttf", 16)
+
 dino_rect = pygame.Rect(100, 250, 64, 64)
 cactus_rect = pygame.Rect(1100, 300, 32, 32)
 ground_rect = pygame.Rect(0, 330, 1200, 2)
@@ -15,7 +20,6 @@ while True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             pygame.quit()
-            sys.exit()
             
         if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_SPACE:
@@ -34,6 +38,11 @@ while True:
     if cactus_rect.x <= -30:
         cactus_rect.x = 1200
     
+    score += 1
+    show_score = round(score/100)
+    score_show = score_font.render("Score: " + str(show_score), True, (0, 0, 0))
+    screen.blit(score_show, (10, 10))   
+    
     pygame.draw.rect(screen, (100, 100, 100), dino_rect)
     pygame.draw.rect(screen, (100, 100, 100), cactus_rect)
     pygame.draw.rect(screen, (100, 100, 100), ground_rect)
@@ -41,7 +50,6 @@ while True:
     if dino_rect.colliderect(cactus_rect):
         pygame.time.delay(2000)
         pygame.quit()
-        sys.exit()
     
     pygame.display.update()
     
