@@ -21,7 +21,7 @@ while True:
         if event.type == pygame.QUIT:
             pygame.quit()
             
-        #Add play state here. Indent the following 6 lines. This will make the keys work for gameplay.
+        #Check if game_state is set to "play". Indent the following 6 lines. This will make the keys work for gameplay.
         if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_SPACE:
                     dino_y_change = -1
@@ -29,7 +29,7 @@ while True:
                 if event.key == pygame.K_SPACE:
                     dino_y_change = 1
         
-        #Add the over state code block here. This will make the keys run for restarting the game.
+        #Check if game_state is set to "over". This will make the keys run for restarting the game.
             #if event.type == pygame.KEYDOWN:
                 #if event.key == pygame.K_SPACE:
                     #Reset game_state = "play"
@@ -37,7 +37,7 @@ while True:
                     #Reset score = 0
                     #Reset dino_y_change = 1
     
-    #Add play game_state. Indent the next 22 lines. This will ensure that the code indented in this block runs only when game is in play state.
+    #Check if game_state is set to "play". Indent the next 22 lines. This will ensure that the code indented in this block runs only when game is in play state.
     dino_rect.y += dino_y_change
     if dino_rect.y > 250:
         dino_rect.y = 250
@@ -61,9 +61,9 @@ while True:
         pygame.time.delay(2000)
         pygame.quit()   #Change this line to set game_state to over.
         
-    #Add the over state code block here. This will ensure that the code indented in this block runs only when game is in over state.
+    #Check if game_state is set to "over". This will ensure that the code indented in this block runs only when game is in over state.
         #pygame.time.delay(500)
-        #game_state = "over"
+        #screen.blit(score_show, (550, 190))
     
     pygame.display.update()
     
